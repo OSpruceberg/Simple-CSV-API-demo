@@ -22,13 +22,12 @@ public class CsvRepository implements DataRepository {
     }
 
     @Override
-    public List<DataRecord> findDataWithLimit(int limit) {
+    public List<DataRecord> getLimitedData(int limit) {
 
         List<DataRecord> dataRows = new ArrayList<>();
         ClassPathResource dataSource = new ClassPathResource("data.csv");
 
-        try
-        {
+        try {
             BufferedReader bufferReader = new BufferedReader(new InputStreamReader(dataSource.getInputStream()));
 
             String line;
@@ -37,6 +36,28 @@ public class CsvRepository implements DataRepository {
             while ((line = bufferReader.readLine()) != null && index < limit) {
                 dataRows.add(csvParser.parseLine(line));
                 index++;
+            }
+
+            return dataRows;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Problem reading CSV file", e);
+        }
+    }
+
+    @Override
+    public List<DataRecord> getAllData() {
+
+        List<DataRecord> dataRows = new ArrayList<>();
+        ClassPathResource dataSource = new ClassPathResource("data.csv");
+
+        try {
+            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(dataSource.getInputStream()));
+
+            String line;
+
+            while ((line = bufferReader.readLine()) != null) {
+                dataRows.add(csvParser.parseLine(line));
             }
 
             return dataRows;

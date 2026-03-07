@@ -12,6 +12,8 @@ import com.example.api_demo.domain.*;
  */
 public interface DataRepository {
 
-    public List<DataRecord> findDataWithLimit(int limit);
+    public List<DataRecord> getLimitedData(int limit);
+
+    public List<DataRecord> getAllData();
 
 }
