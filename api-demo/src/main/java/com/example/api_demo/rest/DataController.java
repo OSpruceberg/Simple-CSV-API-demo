@@ -1,34 +1,43 @@
 package com.example.api_demo.rest;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.api_demo.domain.DataRecord;
-import com.example.api_demo.service.*;
-
-import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.example.api_demo.exception.InvalidLimitException;
+import com.example.api_demo.service.DataService;
 
 @RestController
 public class DataController {
 
-    private DataService service;
+    private final DataService dataService;
 
-    public DataController(DataService newService) {
-        this.service = newService;
+    public DataController(DataService newDataService) {
+        this.dataService = newDataService;
     }
 
-    @RequestMapping("/api/data")
-    public List<DataRecord> getData(@RequestParam int limit) {
+    @GetMapping("/api/data")
+    public ResponseEntity<List<DataRecord>> getData(@RequestParam(required = false) Integer limit) {
 
-        if (limit != 0) {
-            return service.getLimitedData(limit);
+        List<DataRecord> data;
+
+        if (limit == null) {
+            data = dataService.getAllData();
+        } else {
+            if (limit <= 0) {
+                throw new InvalidLimitException("limit must be a positive integer");
+            }
+            data = dataService.getLimitedData(limit);
         }
 
-        else{
-            return service.getAllData();
+        if (data.isEmpty()) {
+            return ResponseEntity.noContent().build();
         }
+
+        return ResponseEntity.ok(data);
     }
-
 }

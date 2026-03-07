@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 
 import com.example.api_demo.repository.parser.Parser;
 import com.example.api_demo.domain.DataRecord;
+import com.example.api_demo.exception.CsvReadException;
 
 @Repository
 public class CsvRepository implements DataRepository {
@@ -41,7 +42,7 @@ public class CsvRepository implements DataRepository {
             return dataRows;
 
         } catch (Exception e) {
-            throw new RuntimeException("Problem reading CSV file", e);
+            throw new CsvReadException("Problem reading CSV file", e);
         }
     }
 
@@ -63,7 +64,7 @@ public class CsvRepository implements DataRepository {
             return dataRows;
 
         } catch (Exception e) {
-            throw new RuntimeException("Problem reading CSV file", e);
+            throw new CsvReadException("Problem reading CSV file", e);
         }
     }
 }
