@@ -13,6 +13,10 @@ import com.example.api_demo.repository.parser.Parser;
 import com.example.api_demo.domain.DataRecord;
 import com.example.api_demo.exception.CsvReadException;
 
+/**
+ * Repository implementation that reads {@link DataRecord} objects from a CSV file.
+ * Uses a {@link Parser} to convert each CSV row into a domain object.
+ */
 @Repository
 public class CsvRepository implements DataRepository {
 

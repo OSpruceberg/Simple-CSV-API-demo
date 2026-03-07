@@ -11,6 +11,12 @@ import com.example.api_demo.domain.DataRecord;
 import com.example.api_demo.exception.InvalidLimitException;
 import com.example.api_demo.service.DataService;
 
+
+/**
+ * REST controller that exposes the API endpoint for retrieving {@link DataRecord} data.
+ * Handles incoming HTTP requests, validates request parameters, and delegates
+ * data retrieval to the service layer.
+ */
 @RestController
 public class DataController {
 

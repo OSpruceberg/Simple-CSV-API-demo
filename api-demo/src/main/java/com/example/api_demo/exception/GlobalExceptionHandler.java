@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+/**
+ * Global exception handler for the REST API.
+ * Translates application and request errors into appropriate HTTP responses.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
