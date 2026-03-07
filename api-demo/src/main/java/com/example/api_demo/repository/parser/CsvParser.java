@@ -2,6 +2,8 @@ package com.example.api_demo.repository.parser;
 
 import javax.management.RuntimeErrorException;
 
+import org.springframework.stereotype.Component;
+
 import com.example.api_demo.domain.DataRecord;
 
 /**
@@ -9,6 +11,7 @@ import com.example.api_demo.domain.DataRecord;
  * This implementation is responsible for interpreting the CSV format
  * and mapping each row to a domain object.
  */
+@Component
 public class CsvParser implements Parser {
 
     private final String SEPARATOR = ";";
