@@ -1,9 +1,7 @@
 package com.example.api_demo.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.example.api_demo.domain.DataRecord;
 import com.example.api_demo.repository.DataRepository;
 

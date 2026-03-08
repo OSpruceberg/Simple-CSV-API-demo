@@ -24,34 +24,34 @@ repository/parser → CSV parsing
 domain/          → Domain objects
 exception/       → Custom exceptions and error handling
 
-# Building the Application
+# Building the Application (Windows)
 
-Open a terminal in the project root and run:
+A snapshot build is already provided in the target-folder but if you wish to build the project yourself you can do this by:
 
-mvn clean install
+1. Clone the repository and navigate to the root.
+
+2. Open a terminal in the project root and run: ".\mvnw.cmd clean package"
 
 This command will:
 
 * download dependencies
 * compile the project
-* package the application
+* package the application (.jar-format)
 
 
-# Running the Application
+# Running the Application (Windows)
 
-Start the application with:
+1. To run the application it is recommended to first download the ready-made snapshot build under the target folder. 
 
+2. Navigate to the downloaded build file and open a terminal.
 
-mvn spring-boot:run
+3. In the terminal, type "java -jar api-demo-0.0.1-SNAPSHOT.jar" to start the application
 
-
-When the application starts you should see:
-
+4. When the application starts you should see:
 
 Tomcat started on port 8080
 
-
-The API is now available locally.
+The API is now available locally and can be accesed by "http://localhost:8080/api/data".
 
 
 # API Endpoint
@@ -135,7 +135,7 @@ Example:
 
 # Error Handling
 
-The API returns appropriate HTTP responses for common errors.
+The API should return an appropriate HTTP responses for common errors.
 
 | Scenario               | Response                  |
 | ---------------------- | ------------------------- |
@@ -163,20 +163,3 @@ Invalid request:
 
 
 http://localhost:8080/api/data?limit=abc
-
-
-# Running on Windows (Quick Guide)
-
-1. Install **Java 21**
-2. Install **Maven**
-3. Open **PowerShell**
-4. Navigate to the project folder
-5. Run:
-
-
-mvn spring-boot:run
-
-
-Then open:
-
-http://localhost:8080/api/data

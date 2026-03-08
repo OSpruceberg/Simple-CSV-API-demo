@@ -2,13 +2,10 @@ package com.example.api_demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
 import com.example.api_demo.repository.parser.Parser;
 import com.example.api_demo.domain.DataRecord;
 import com.example.api_demo.exception.CsvReadException;

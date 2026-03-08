@@ -8,5 +8,3 @@ package com.example.api_demo.domain;
 public record DataRecord(long id, String name, int age, String email) {
 
 }
-
-//Comment to commit
